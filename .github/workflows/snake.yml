@@ -15,7 +15,10 @@ jobs:
           outputs: |
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      - uses: actions/upload-artifact@v4
+      - name: Push snake to repository
+        uses: crazy-max/ghaction-github-pages@v3
         with:
-          name: github-snake
-          path: dist
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
